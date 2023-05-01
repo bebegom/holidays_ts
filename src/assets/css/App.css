@@ -1,0 +1,15 @@
+#root {
+  max-width: 900px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.available-country-card {
+  background-color: rgb(229, 221, 212);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.available-country-card:hover {
+  background-color: antiquewhite;
+}
