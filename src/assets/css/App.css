@@ -4,6 +4,19 @@
   padding: 1rem;
 }
 
+.d-flex {
+  display: flex;
+  gap: 20px;
+}
+
+#availableCountriesSection {
+  background-color: bisque;
+}
+
+#upcomingHolidaysSection {
+  background-color: rgb(159, 110, 49);
+}
+
 .available-country-card {
   background-color: rgb(229, 221, 212);
   margin-bottom: 1rem;
@@ -12,4 +25,8 @@
 
 .available-country-card:hover {
   background-color: antiquewhite;
+}
+
+.full-width {
+  flex-basis: 100%;
 }

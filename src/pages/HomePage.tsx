@@ -14,17 +14,24 @@ const HomePage = () => {
     }, [])
 
     return (
-        <div>
-            {c && (
-                <>
-                    <h2>Available countries ({c.length})</h2>
+        <div className="d-flex">
+            <section id='upcomingHolidaysSection' className="full-width">
+                <p>left section</p>
+            </section>
 
-                    {c.map((value: AvailableCountryInterface) => (
-                        <AvailableCountryCard key={value.countryCode} countryCode={value.countryCode} name={value.name} />
-                    ))}
-                </>
-            )}
+            <section id='availableCountriesSection' className="full-width">
+                {c && (
+                    <>
+                        <h2>Available countries ({c.length})</h2>
+
+                        {c.map((value: AvailableCountryInterface) => (
+                            <AvailableCountryCard key={value.countryCode} countryCode={value.countryCode} name={value.name} />
+                        ))}
+                    </>
+                )}
+            </section>
         </div>
+
     )
 }
 
