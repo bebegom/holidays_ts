@@ -27,6 +27,14 @@
   background-color: antiquewhite;
 }
 
+.holiday-card {
+  background-color: blanchedalmond;
+}
+
 .full-width {
   flex-basis: 100%;
+}
+
+.flex-min-height {
+  align-self: flex-start;
 }

@@ -1,30 +1,43 @@
 import { useEffect, useState } from "react"
-import { getAvailableCountries } from "../services/publicHolidaysAPI"
+import { getAvailableCountries, getUpcomingHolidaysWorldwide } from "../services/publicHolidaysAPI"
 import AvailableCountryCard from "../components/availableCountryCard"
+import HolidayCard from "../components/holidayCard"
 
 
 
 
 const HomePage = () => {
-    const [c, setC] = useState([])
+    const [availableCountries, setAvailableCountries] = useState([])
+    const [upcomingHolidays, setUpcomingHolidays] = useState([])
 
     useEffect(() => {
         const countries = getAvailableCountries()
-        countries.then(data => setC(data))
+        countries.then(data => setAvailableCountries(data))
+
+        const upcomingHolidays = getUpcomingHolidaysWorldwide()
+        upcomingHolidays.then(data => setUpcomingHolidays(data))
     }, [])
 
     return (
         <div className="d-flex">
-            <section id='upcomingHolidaysSection' className="full-width">
-                <p>left section</p>
+            <section id='upcomingHolidaysSection' className="full-width flex-min-height">
+                {upcomingHolidays && (
+                    <>
+                        <h2>Upcoming holidays worldwide</h2>
+                        {upcomingHolidays.map((value: HolidayInterface) => (
+                            <HolidayCard key={value.localName} name={value.name} date={value.date} localName={value.localName} countries={value.countries} countryCode={value.countryCode} />
+                        ))}
+                    </>
+
+                )}
             </section>
 
             <section id='availableCountriesSection' className="full-width">
-                {c && (
+                {availableCountries && (
                     <>
-                        <h2>Available countries ({c.length})</h2>
+                        <h2>Available countries ({availableCountries.length})</h2>
 
-                        {c.map((value: AvailableCountryInterface) => (
+                        {availableCountries.map((value: AvailableCountryInterface) => (
                             <AvailableCountryCard key={value.countryCode} countryCode={value.countryCode} name={value.name} />
                         ))}
                     </>
