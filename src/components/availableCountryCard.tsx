@@ -2,10 +2,16 @@ import { Dispatch, Fragment, useEffect, useState } from "react"
 import { getCountryInfo } from "../services/publicHolidaysAPI"
 import { useNavigate } from "react-router-dom"
 
+type Props = {
+    name: string,
+    countryCode: string,
+    detailsAlwaysVisibly?: boolean,
+}
 
-const AvailableCountryCard = ({ name, countryCode }: AvailableCountryInterface) => {
-    const [info, setInfo]: [CountryInfo | undefined, Dispatch<React.SetStateAction<CountryInfo | undefined>>] = useState()
-    const [visible, setVisible] = useState(false)
+
+const AvailableCountryCard = ({ name, countryCode, detailsAlwaysVisibly = false }: Props) => {
+    const [info, setInfo]: [CountryInfoInterface | undefined, Dispatch<React.SetStateAction<CountryInfoInterface | undefined>>] = useState()
+    const [visible, setVisible] = useState<boolean>(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -15,15 +21,26 @@ const AvailableCountryCard = ({ name, countryCode }: AvailableCountryInterface) 
 
     return (
         <>
-            <div onClick={() => navigate(`/${countryCode}`)} className="available-country-card" onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)}>
+            <div onClick={() => detailsAlwaysVisibly ? null : navigate(`/${countryCode}`)} className={`${detailsAlwaysVisibly ? '' : 'available-country-card'}`} onMouseEnter={() => detailsAlwaysVisibly ? null : setVisible(true)} onMouseLeave={() => detailsAlwaysVisibly ? null : setVisible(false)}>
                 {name} ({countryCode})
                 <Fragment>
-                    {visible && info != undefined && (
-                        <div className="hiddenContainer">
+                    {!detailsAlwaysVisibly && visible && info != undefined && (
+                        <div>
                             <p>region: {info.region}</p>
                             {info.borders.length > 0 && (
                                 <>
-                                    <p>neightbours: {info.borders.map((e) => e.commonName).join(', ')}</p>
+                                    <p>neighbours: {info.borders.map((e) => e.commonName).join(', ')}</p>
+                                </>
+                            )}
+                        </div>
+                    )}
+
+                    {detailsAlwaysVisibly && info != undefined && (
+                        <div>
+                            <p>region: {info.region}</p>
+                            {info.borders.length > 0 && (
+                                <>
+                                    <p>neighbours: {info.borders.map((e) => e.commonName).join(', ')}</p>
                                 </>
                             )}
                         </div>

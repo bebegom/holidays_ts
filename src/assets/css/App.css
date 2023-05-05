@@ -4,9 +4,36 @@
   padding: 1rem;
 }
 
+.bg-c {
+  background-color: antiquewhite;
+}
+
+.bg-c-2 {
+  background-color: rgb(186, 173, 157);
+}
+
+.margin-auto {
+  margin: auto;
+}
+
 .d-flex {
   display: flex;
   gap: 20px;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+
+.center-column {
+  align-items: center;
+}
+
+.h-center {
+  justify-content: center;
 }
 
 #availableCountriesSection {

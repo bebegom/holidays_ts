@@ -5,7 +5,7 @@ const get = async (endpoint: string) => {
     return res.data
 }
 
-export const getAvailableCountries = async () => {
+export const getAvailableCountries = () => {
     return get(`https://date.nager.at/api/v3/AvailableCountries`)
 
 }

@@ -1,4 +1,4 @@
-interface CountryInfo {
+interface CountryInfoInterface {
     commonName: string,
     officialName: string,
     countryCode: string,
