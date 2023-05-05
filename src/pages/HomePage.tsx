@@ -25,7 +25,7 @@ const HomePage = () => {
                 <div>loading...</div>
             )}
             <div className="d-flex">
-                <section id='upcomingHolidaysSection' className="full-width flex-min-height">
+                <section className="full-width flex-min-height">
                     {upcomingHolidays && (
                         <>
                             <h2>Upcoming holidays worldwide</h2>
@@ -37,7 +37,7 @@ const HomePage = () => {
                     )}
                 </section>
 
-                <section id='availableCountriesSection' className="full-width">
+                <section className="full-width">
                     {availableCountries && (
                         <>
                             <h2>Available countries ({availableCountries.length})</h2>

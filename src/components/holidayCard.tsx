@@ -2,7 +2,7 @@ const HolidayCard = ({ name, localName, date, countryCode, countries }: HolidayI
 
     return (
         <>
-            <div className="holiday-card">
+            <div>
                 <p>{date}</p>
                 <p>{name}</p>
                 <p>{localName}</p>

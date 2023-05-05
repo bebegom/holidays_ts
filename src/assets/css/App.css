@@ -4,18 +4,6 @@
   padding: 1rem;
 }
 
-.bg-c {
-  background-color: antiquewhite;
-}
-
-.bg-c-2 {
-  background-color: rgb(186, 173, 157);
-}
-
-.bg-c-3 {
-  background-color: rgb(193, 145, 86);
-}
-
 .text-align-center {
   text-align: center;
 }
@@ -40,27 +28,13 @@
   align-items: center;
 }
 
-#availableCountriesSection {
-  background-color: bisque;
-}
-
-#upcomingHolidaysSection {
-  background-color: rgb(159, 110, 49);
-}
-
 .available-country-card {
-  background-color: rgb(229, 221, 212);
   margin-bottom: 1rem;
   padding: 1rem;
 }
 
 .available-country-card:hover {
-  background-color: antiquewhite;
   cursor: pointer;
-}
-
-.holiday-card {
-  background-color: blanchedalmond;
 }
 
 .full-width {

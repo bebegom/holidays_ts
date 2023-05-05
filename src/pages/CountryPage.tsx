@@ -31,11 +31,11 @@ const CountryPage = () => {
                         {countryInfo.commonName}
                     </h2>
                     <div className="d-flex">
-                        <section className="full-width bg-c-3 flex-min-height">
+                        <section className="full-width flex-min-height">
                             <AvailableCountryCard name={countryInfo.commonName} countryCode={countryInfo.countryCode} detailsAlwaysVisibly={true} />
                         </section>
                         {countryHolidays && (
-                            <section className="full-width bg-c-3">
+                            <section className="full-width">
                                 <h4>next upcoming holidays</h4>
                                 {countryHolidays.map((holiday: HolidayInterface, index) => (
                                     <HolidayCard key={index} date={holiday.date} countries={holiday.countries} countryCode={holiday.countryCode} localName={holiday.localName} name={holiday.name} />
