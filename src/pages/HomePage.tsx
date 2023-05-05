@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getAvailableCountries, getUpcomingHolidaysWorldwide } from "../services/publicHolidaysAPI"
 import AvailableCountryCard from "../components/availableCountryCard"
 import HolidayCard from "../components/holidayCard"
+import LoadingIndicator from "../components/loadingIndicator"
 
 
 
@@ -11,19 +12,37 @@ const HomePage = () => {
     const [upcomingHolidays, setUpcomingHolidays] = useState([])
     const [loading, setLoading] = useState<boolean>(true)
 
-    useEffect(() => {
-        getAvailableCountries().then(data => setAvailableCountries(data))
+    const delay = (ms: number) => new Promise(
+        resolve => setTimeout(resolve, ms)
+    );
 
-        const upcomingHolidays = getUpcomingHolidaysWorldwide()
-        upcomingHolidays.then(data => setUpcomingHolidays(data))
-        setLoading(false)
+    useEffect(() => {
+
+        // TODO remove delay
+        async function makeRequest() {
+
+            await delay(3000);
+
+            getAvailableCountries().then(data => setAvailableCountries(data))
+
+            const upcomingHolidays = getUpcomingHolidaysWorldwide()
+            upcomingHolidays.then(data => setUpcomingHolidays(data))
+
+            setLoading(false)
+
+        }
+
+        makeRequest();
+
+
     }, [])
 
     return (
         <>
             {loading && (
-                <div>loading...</div>
+                <LoadingIndicator />
             )}
+
             <div className="d-flex">
                 <section className="full-width flex-min-height">
                     {upcomingHolidays && (

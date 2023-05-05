@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { getCountryHolidays, getCountryInfo } from "../services/publicHolidaysAPI"
 import AvailableCountryCard from "../components/availableCountryCard"
 import HolidayCard from "../components/holidayCard"
+import LoadingIndicator from "../components/loadingIndicator"
 
 const CountryPage = () => {
     const { countryCode } = useParams()
@@ -22,7 +23,7 @@ const CountryPage = () => {
     return (
         <>
             {loading && (
-                <div>loading...</div>
+                <LoadingIndicator />
             )}
 
             {countryInfo != undefined && (

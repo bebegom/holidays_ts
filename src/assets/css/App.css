@@ -48,3 +48,36 @@
 .flex-min-height {
   align-self: flex-start;
 }
+
+#loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loading-circle {
+  background-color: aliceblue;
+  margin: auto;
+  position: fixed;
+  top: 40%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 100px;
+}
+
+#loading-circle img {
+  width: 180px;
+  animation: slide 2s infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-150px)
+  }
+
+  100% {
+    transform: translateX(100px)
+  }
+}
