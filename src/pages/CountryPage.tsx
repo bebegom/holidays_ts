@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getCountryHolidays, getCountryInfo } from "../services/publicHolidaysAPI"
 import AvailableCountryCard from "../components/availableCountryCard"
+import HolidayCard from "../components/holidayCard"
 
 const CountryPage = () => {
     const { countryCode } = useParams()
@@ -13,9 +14,7 @@ const CountryPage = () => {
 
     useEffect(() => {
         getCountryInfo(countryCode ?? '').then((data) => setCountryInfo(data))
-
-        const thisYear: number = new Date().getFullYear()
-        getCountryHolidays(thisYear.toString(), countryCode ?? '').then(data => setCountryHolidays(data))
+        getCountryHolidays(countryCode ?? '').then(data => setCountryHolidays(data))
 
         setLoading(false)
     }, [])
@@ -27,22 +26,23 @@ const CountryPage = () => {
             )}
 
             {countryInfo != undefined && (
-                <div className="d-flex-column center-column bg-c">
-                    {countryInfo.commonName}
-                    <div className="d-flex h-center bg-c-2">
-                        <section>
+                <div className="center-column">
+                    <h2 className="text-align-center">
+                        {countryInfo.commonName}
+                    </h2>
+                    <div className="d-flex">
+                        <section className="full-width bg-c-3 flex-min-height">
                             <AvailableCountryCard name={countryInfo.commonName} countryCode={countryInfo.countryCode} detailsAlwaysVisibly={true} />
                         </section>
+                        {countryHolidays && (
+                            <section className="full-width bg-c-3">
+                                <h4>next upcoming holidays</h4>
+                                {countryHolidays.map((holiday: HolidayInterface, index) => (
+                                    <HolidayCard key={index} date={holiday.date} countries={holiday.countries} countryCode={holiday.countryCode} localName={holiday.localName} name={holiday.name} />
+                                ))}
+                            </section>
+                        )}
                     </div>
-                    {countryHolidays && (
-                        <div>
-                            {countryHolidays.map((holiday: HolidayInterface, index) => (
-                                <div key={index}>
-                                    {holiday.name}
-                                </div>
-                            ))}
-                        </div>
-                    )}
                 </div>
             )}
         </>

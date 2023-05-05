@@ -14,8 +14,8 @@ export const getCountryInfo = (countryCode: string) => {
     return get(`https://date.nager.at/api/v3/countryinfo/${countryCode}`)
 }
 
-export const getCountryHolidays = (year: string, countryCode: string) => {
-    return get(`https://date.nager.at/api/v3/publicholidays/${year}/${countryCode}`)
+export const getCountryHolidays = (countryCode: string) => {
+    return get(`https://date.nager.at/api/v3/nextpublicholidays/${countryCode}`)
 }
 
 export const getUpcomingHolidaysWorldwide = () => {

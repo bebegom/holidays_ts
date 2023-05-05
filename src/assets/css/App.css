@@ -12,6 +12,14 @@
   background-color: rgb(186, 173, 157);
 }
 
+.bg-c-3 {
+  background-color: rgb(193, 145, 86);
+}
+
+.text-align-center {
+  text-align: center;
+}
+
 .margin-auto {
   margin: auto;
 }
@@ -30,10 +38,6 @@
 
 .center-column {
   align-items: center;
-}
-
-.h-center {
-  justify-content: center;
 }
 
 #availableCountriesSection {
@@ -60,6 +64,10 @@
 
 .full-width {
   flex-basis: 100%;
+}
+
+.full-width-column {
+  align-items: stretch;
 }
 
 .flex-min-height {
