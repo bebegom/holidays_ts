@@ -15,13 +15,10 @@ const CountryPage = () => {
         getCountryInfo(countryCode ?? '').then((data) => setCountryInfo(data))
 
         const thisYear: number = new Date().getFullYear()
-        console.log(thisYear)
         getCountryHolidays(thisYear.toString(), countryCode ?? '').then(data => setCountryHolidays(data))
 
         setLoading(false)
     }, [])
-
-    console.log(countryHolidays);
 
     return (
         <>
@@ -39,8 +36,8 @@ const CountryPage = () => {
                     </div>
                     {countryHolidays && (
                         <div>
-                            {countryHolidays.map((holiday: HolidayInterface) => (
-                                <div>
+                            {countryHolidays.map((holiday: HolidayInterface, index) => (
+                                <div key={index}>
                                     {holiday.name}
                                 </div>
                             ))}
@@ -48,8 +45,6 @@ const CountryPage = () => {
                     )}
                 </div>
             )}
-
-
         </>
     )
 }
